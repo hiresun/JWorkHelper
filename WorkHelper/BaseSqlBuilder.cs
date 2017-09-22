@@ -3,6 +3,7 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using DevLogHelper.Resources;
+using System.Data;
 
 namespace DevLogHelper
 {
@@ -28,6 +29,7 @@ namespace DevLogHelper
             string msg = _rm.GetString("BaseSqlTip");
             try
             {
+
                 BaseSql.BaseSql sq = new BaseSql.BaseSql();
                 StringBuilder str = sq.BuilderCode(txtInput.Text, cbIsModel, txt_TableName.Text, ckb_Model.Checked, ckb_Insert.Checked,ckb_Update.Checked,ckb_Select.Checked,ckb_Delete.Checked,ckbExcel.Checked);
                 txtResult.Text = str.ToString();

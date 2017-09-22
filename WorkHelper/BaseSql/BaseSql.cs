@@ -48,19 +48,16 @@ namespace DevLogHelper.BaseSql
                     }
                 }
             }
+
             StringBuilder returnstr = new StringBuilder();
             StringBuilder strBuilder = new StringBuilder();
             DataSet ds = SqlHelper.Query(inputCode);
             DataRow dr = null;
             DataTable dt = new DataTable();
-            if (ds.Tables != null && ds.Tables.Count > 0)
-            {
+
                 dt = ds.Tables[0];
-            }
-            if (dt.Rows != null && dt.Rows.Count > 0)
-            {
-                dr = dt.Rows[0];
-            }
+                dr = ds.Tables[0].Rows[0];
+
             string Id = string.Empty; //业务主Id,一般情况第一个字段是主键，当然如果第一个字段不是主键，那就需要修改了
 
             #region 封装实体Model
@@ -87,6 +84,14 @@ namespace DevLogHelper.BaseSql
                         strBuilder.AppendLine("          }");
                         break;
                     case "System.Int":
+                        strBuilder.AppendLine("       private Int " + "_" + dr.Table.Columns[i] + ";");
+                        strBuilder.AppendLine("       public Int " + dr.Table.Columns[i] + "");
+                        strBuilder.AppendLine("         {");
+                        strBuilder.AppendLine("            get { return " + "_" + dr.Table.Columns[i] + "; }");
+                        strBuilder.AppendLine("             set { " + "_" + dr.Table.Columns[i] + " = value; }");
+                        strBuilder.AppendLine("         }");
+                        break;
+                    case "System.Int32":
                         strBuilder.AppendLine("       private Int " + "_" + dr.Table.Columns[i] + ";");
                         strBuilder.AppendLine("       public Int " + dr.Table.Columns[i] + "");
                         strBuilder.AppendLine("         {");
@@ -203,6 +208,9 @@ namespace DevLogHelper.BaseSql
                         strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.NVarChar, 255),");
                         break;
                     case "System.Int":
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Int),");
+                        break;
+                    case "System.Int32":
                         strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Int),");
                         break;
                     case "System.DateTime":
@@ -457,10 +465,10 @@ namespace DevLogHelper.BaseSql
                 switch (Type)
                 {
                     case "System.DateTime":
-                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"字段名称自行补全\", DataType = EnumColumnDataType.日期, Width = 15 },");
+                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + dr.Table.Columns[i] + "\", DataType = EnumColumnDataType.日期, Width = 15 },");
                         break;
                     default:
-                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"字段名称自行补全\", DataType = EnumColumnDataType.文本, Width = 15 },");
+                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + dr.Table.Columns[i] + "\", DataType = EnumColumnDataType.文本, Width = 15 },");
                         break;
                 }
             }
@@ -475,7 +483,7 @@ namespace DevLogHelper.BaseSql
 
             for (int i = 0; i < dr.Table.Columns.Count; i++)
             {
-                strBuilder.AppendLine("                            dr[\" " + dr.Table.Columns[i] + "\"].ToString()  ");
+                strBuilder.AppendLine("                            dr[\"" + dr.Table.Columns[i] + "\"].ToString(), ");
             }
 
             strBuilder.AppendLine(@"          };       

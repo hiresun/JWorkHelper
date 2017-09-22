@@ -18,7 +18,6 @@ C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\DevLogHelper.pdb
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\bin\Debug\DevLogHelper.exe
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\bin\Debug\DevLogHelper.pdb
-C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\WorkHelper.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\DevLogHelper.ApproveFrom.resources
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\DevLogHelper.BaseSqlBuilder.resources
 C:\Users\Administrator\Desktop\DevLogHelper\WorkHelper\WorkHelper\obj\x86\Debug\DevLogHelper.DevCode.resources

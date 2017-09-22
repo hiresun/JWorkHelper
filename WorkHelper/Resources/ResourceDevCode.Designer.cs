@@ -106,6 +106,15 @@ namespace DevLogHelper.Resources {
         }
         
         /// <summary>
+        ///   查找类似 请至少输入表名或一条sql语句！ 的本地化字符串。
+        /// </summary>
+        internal static string QueryEmpty {
+            get {
+                return ResourceManager.GetString("QueryEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请输入查询语句 的本地化字符串。
         /// </summary>
         internal static string QuerySqlEmpty {

@@ -1,0 +1,108 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Data;
+using CMS.Utilities;
+using System.Data.OleDb;
+using System.Configuration;
+using System.Data.SqlClient;
+using System;
+namespace MyProject.Entitiese
+{     
+    <#
+          string connectionString = "server=192.168.2.230;database=tjprj;uid=erptest;pwd=test@123456";
+		     string selectQuery = "select * from Team_";
+			 string tableName="Team_";
+          SqlConnection conn = new SqlConnection(connectionString);
+          conn.Open();
+	    	 System.Data.DataTable schema = null;
+		        SqlCommand selectcommand = new SqlCommand(selectQuery, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(selectcommand);
+                System.Data.DataSet dss = new   System.Data.DataSet();
+                sda.Fill(dss);
+		 	   schema=dss.Tables[0];
+                System.Data.DataTable   dt = dss.Tables[0];
+                System.Data.DataRow   dr = dss.Tables[0].Rows[0];
+           SqlCommand command = new SqlCommand(selectQuery,conn);
+           SqlDataAdapter ad = new SqlDataAdapter(command); 
+     #>  
+ public class <#= tableName#>Bizs
+ {      
+      public class <#= tableName#>Models      
+       {         
+		  <#   foreach (DataColumn dc in dss.Tables[0].Columns)
+                  {    #>                    
+            private <#= dc.DataType.Name #> _<#= dc.ColumnName.Replace(dc.ColumnName[0].ToString(), dc.ColumnName[0].ToString().ToLower())      #>;                      
+            public <#= dc.DataType.Name #> <#= dc.ColumnName #>
+            {
+                   get { return _<#= dc.ColumnName.Replace(dc.ColumnName[0].ToString(), dc.ColumnName[0].ToString().ToLower()) #>; }
+                   set { _<#= dc.ColumnName.Replace(dc.ColumnName[0].ToString(), dc.ColumnName[0].ToString().ToLower()) #> = value; }
+             }                                                
+              <# }  #>     
+     
+           }     
+	    public bool Insert<#= tableName#>(<#= tableName#>Models model)
+        {
+		     string strSql = @"
+                   INSERT Team_(
+		    <#   foreach (DataColumn dc in dss.Tables[0].Columns)
+                  {    #><#= dc.ColumnName #>,
+              <# }  #>   
+			         )
+			     VALUES (
+			      <#   foreach (DataColumn dc in dss.Tables[0].Columns)
+                  {    #><#= dc.ColumnName #>,
+               <# }  #>         
+			         )
+                     ";
+			     SqlParameter[] parameters = new SqlParameter[]
+                    {
+			            <#   foreach (DataColumn dc in dss.Tables[0].Columns)
+                  {    #>  new SqlParameter("<#= dc.ColumnName #>,", SqlDbType.NVarChar, 255),
+                    <# }  #>       
+					    };
+				<#    for (int i = 0; i < dr.Table.Columns.Count; i++)
+                  {    #> parameters[<#=i#>].Value = model.<#=dr.Table.Columns[i] #>;
+				   <# }  #>       
+		     using (SqlConnection conn = new SqlConnection(SqlHelper.ConnectionString))
+            {
+                conn.Open();
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = SqlHelper.ExecuteNonQuery(trans, CommandType.Text, strSql, parameters);
+                        if (i > 0)
+                        {
+                            trans.Commit();
+                            return i > 0;
+                        }
+                        else
+                        {
+                            trans.Rollback();
+                            return false;
+                        }
+                    }
+                    catch (System.Exception e)
+                    {
+                        trans.Rollback();
+					    return false;
+                        throw e;
+                    }
+                }
+            }
+           }     
+
+
+   }
+          
+}

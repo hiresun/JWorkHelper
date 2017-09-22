@@ -137,6 +137,16 @@
     <Compile Include="SqlHelper\ServerConfig.cs" />
     <Compile Include="SqlHelper\SQLHelper.cs" />
     <Compile Include="SqlHelper\VariableName.cs" />
+    <Compile Include="T4workHelper\ModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4workHelper\InsertTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InsertTemplate.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ApproveFrom.resx">
       <DependentUpon>ApproveFrom.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +184,7 @@
       <LastGenOutput>ResourceMsg.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="T4workHelper\ModelAuto.ttinclude" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -206,6 +217,19 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="T4workHelper\ModelTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="T4workHelper\InsertTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InsertTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
