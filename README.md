@@ -7,6 +7,10 @@
 就这样，具体看代码。
 >5. 添加了T4模板根据数据库自动生成实体类模板，另外还有生成insert的方法，可以自行在此基础上扩展select，update，delete的方法。
 >6. 另外还有数据库存储过程生成实体类的方法，[博客地址](http://www.cnblogs.com/anyushengcms/p/7573289.html)：http://www.cnblogs.com/anyushengcms/p/7573289.html
+
+
+
+
 之前写了篇文章，懒人小工具：[自动生成Model,Insert,Select,Delete以及导出Excel的方法](http://www.jianshu.com/p/d5b11589174a),但是有人觉得这种方法很麻烦。其实我感觉确实是有点麻烦，麻烦在于字符串的拼接。
 这种时候我想到了T4模板，用过EF的 DatabaseFirst自动生成实体的同学就明白，dbfirst 自带T4模板，之前我们在学习spring.net框架的时候，也有用过T4模板根据数映射到实体类自动创建仓储。T4模板其实还有很多应用的场景。
 T4模板确实挺方便的，但是其实其中用过的原理和我之前做winform小工具差不多。都是根据数据字段和类型的映射生成实体。另外就是ado.net基础知识。
