@@ -1,10 +1,6 @@
->添加了安装包，直接点击下一步下一步就可以了，在桌面生成工具，点击工具可以用了
+>##添加了安装包，直接点击下一步下一步就可以了，在桌面生成工具，点击工具可以用了
 
 ![安装包.png](http://upload-images.jianshu.io/upload_images/6855212-60c3dd32953cafe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-
-
 
 >### WorkHelper
 >
