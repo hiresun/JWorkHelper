@@ -1,7 +1,6 @@
 >##添加了安装包，直接点击下一步下一步就可以了，在桌面生成工具，点击工具可以用了
 
 ![安装包.png](http://upload-images.jianshu.io/upload_images/6855212-60c3dd32953cafe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 >### WorkHelper
 >
 >1. 自己动手写的ado.net 的一个工具，根据数据库表自动生成Model,自动生成insert，update,delete,select，以及导出Excel的方法。
