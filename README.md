@@ -8,6 +8,28 @@
 >6. 另外还有数据库存储过程生成实体类的方法，[博客地址](http://www.cnblogs.com/anyushengcms/p/7573289.html)：http://www.cnblogs.com/anyushengcms/p/7573289.html
 >7. 新增了安装包，直接安装可用，不用打开程序。
 
+看下效果
+SQL语句：
+![12.png](http://upload-images.jianshu.io/upload_images/6855212-9bb70a713103eec9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+自动生成的方法：
+
+![23.png](http://upload-images.jianshu.io/upload_images/6855212-0767ab1c6dbed3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+工具效果：
+
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-46065beb2d67e323.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+使用方法： 修改自己数据库连接，然后生成，bin目录下找到DevLogHelper。exe文件，即可。
+
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-8c1c32eb253f2e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+![安装包.png](http://upload-images.jianshu.io/upload_images/6855212-60c3dd32953cafe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
 先预览界面，winform 就不在乎美观不美观了。
 ![2.png](http://upload-images.jianshu.io/upload_images/6855212-ab7e228980c7a6f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![3.png](http://upload-images.jianshu.io/upload_images/6855212-5cfecc9619ccde4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -17,9 +39,6 @@
 ![1.png](http://upload-images.jianshu.io/upload_images/6855212-c7cec73af2b5df43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-添加了安装包，直接点击下一步下一步就可以了，在桌面生成工具，点击工具可以用了
-
-![安装包.png](http://upload-images.jianshu.io/upload_images/6855212-60c3dd32953cafe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### WorkHelper
 扩展存储过程版本：
