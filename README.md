@@ -11,18 +11,16 @@
 
 ## 运行效果
 SQL语句：
-![12.png](http://upload-images.jianshu.io/upload_images/6855212-9bb70a713103eec9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-8b2170cbcb7facb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-自动生成的方法：
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-ad20f719ead84f6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![23.png](http://upload-images.jianshu.io/upload_images/6855212-0767ab1c6dbed3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-ad9edc1b977cfcc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-工具效果：
-
-![image.png](http://upload-images.jianshu.io/upload_images/6855212-46065beb2d67e323.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](http://upload-images.jianshu.io/upload_images/6855212-3ec533671adcbdf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 使用方法：
-修改自己数据库连接，然后生成，bin目录下找到DevLogHelper。exe文件，即可。
+修改自己数据库连接，然后生成，bin目录下找到DevLogHelper.exe文件，即可。
 
 ![image.png](http://upload-images.jianshu.io/upload_images/6855212-8c1c32eb253f2e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
