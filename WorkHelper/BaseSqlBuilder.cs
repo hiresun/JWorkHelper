@@ -4,6 +4,9 @@ using System.Text;
 using System.Windows.Forms;
 using DevLogHelper.Resources;
 using System.Data;
+using System.Collections;
+using System.Web.Caching;
+using System.Web;
 
 namespace DevLogHelper
 {
@@ -17,7 +20,11 @@ namespace DevLogHelper
 
         private void BaseSqlBuilder_Load(object sender, EventArgs e)
         {
-
+            //初始化数据库链接
+            this.txtdataSource.Text = "192.168.2.230";
+            this.txtdataCatalog.Text = "tjprj";
+            this.txtuserName.Text = "erptest";
+            this.txtuserPwd.Text = "test@123456";
         }
         /// <summary>
         /// 生成
@@ -29,6 +36,12 @@ namespace DevLogHelper
             string msg = _rm.GetString("BaseSqlTip");
             try
             {
+
+                //缓存数据库链接
+                HttpRuntime.Cache.Insert("dataSource", this.txtdataSource.Text);
+                HttpRuntime.Cache.Insert("dataCatalog", this.txtdataCatalog.Text);
+                HttpRuntime.Cache.Insert("userName", this.txtuserName.Text);
+                HttpRuntime.Cache.Insert("userPwd", this.txtuserPwd.Text);
 
                 BaseSql.BaseSql sq = new BaseSql.BaseSql();
                 StringBuilder str = sq.BuilderCode(txtInput.Text, cbIsModel, txt_TableName.Text, ckb_Model.Checked, ckb_Insert.Checked,ckb_Update.Checked,ckb_Select.Checked,ckb_Delete.Checked,ckbExcel.Checked);

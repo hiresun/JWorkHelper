@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkHelper", "WorkHelper\WorkHelper.csproj", "{C5112421-9D07-4B84-ABC7-471E99CAE5F5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{188DEEB0-7798-472A-85F1-7CFF0D5BE842}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,12 +23,6 @@ Global
 		{C5112421-9D07-4B84-ABC7-471E99CAE5F5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{C5112421-9D07-4B84-ABC7-471E99CAE5F5}.Release|x86.ActiveCfg = Release|x86
 		{C5112421-9D07-4B84-ABC7-471E99CAE5F5}.Release|x86.Build.0 = Release|x86
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Debug|Any CPU.ActiveCfg = Debug
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Debug|x86.ActiveCfg = Debug
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Release|Any CPU.ActiveCfg = Release
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Release|Mixed Platforms.ActiveCfg = Release
-		{188DEEB0-7798-472A-85F1-7CFF0D5BE842}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

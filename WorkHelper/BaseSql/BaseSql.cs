@@ -189,7 +189,7 @@ namespace DevLogHelper.BaseSql
 
 
 
-            strBuilder.AppendLine("   public bool Insert" + Table + "(Model model)");
+            strBuilder.AppendLine("   public bool Insert" + Table + "(Model model, out string errMsg)");
             strBuilder.AppendLine(@"    {   
            ");
             strBuilder.AppendLine("                    string strSql = @\"");
@@ -232,6 +232,7 @@ namespace DevLogHelper.BaseSql
             }
 
             strBuilder.AppendLine(@"
+            errMsg = string.Empty;
             using (SqlConnection conn = new SqlConnection(SqlHelper.ConnectionString))
             {
                 conn.Open();
@@ -251,11 +252,11 @@ namespace DevLogHelper.BaseSql
                             return false;
                         }
                     }
-                    catch (System.Exception e)
+                    catch (System.Exception ex)
                     {
-                         return false;
                         trans.Rollback();
-                        throw e;
+                        errMsg = ex.Message;
+                        throw ex;
                     }
                   }
                }
@@ -305,7 +306,7 @@ namespace DevLogHelper.BaseSql
 
 
 
-            strBuilder.AppendLine("   public bool Update" + Table + "ById(Model model)");
+            strBuilder.AppendLine("   public bool Update" + Table + "ById(Model model,out string errMsg)");
             strBuilder.AppendLine(@"    {   
            ");
             strBuilder.AppendLine("                    string strSql = @\"");
@@ -345,6 +346,7 @@ namespace DevLogHelper.BaseSql
             }
 
             strBuilder.AppendLine(@"
+           errMsg=string.Empty;
             using (SqlConnection conn = new SqlConnection(SqlHelper.ConnectionString))
             {
                 conn.Open();
@@ -364,11 +366,11 @@ namespace DevLogHelper.BaseSql
                             return false;
                         }
                     }
-                    catch (System.Exception e)
+                    catch (System.Exception ex)
                     {
-                        return false;
-                        trans.Rollback();
-                        throw e;
+                       trans.Rollback();
+                        errMsg = ex.Message;
+                        throw ex;
                     }
                   }
                }

@@ -2,6 +2,8 @@ using System;
 using System.Web;
 using CMS.Utilities.Encryption;
 using System.Configuration;
+using System.Web.Caching;
+using System.Web;
 
 namespace CMS.Utilities
 {
@@ -121,8 +123,18 @@ namespace CMS.Utilities
             string userName = ServerConfig.GetDBServerUser();
             string userPwd = ServerConfig.GetDBServerPassword();
 
+            //获取缓存中数据库链接方式
+            if (string.IsNullOrWhiteSpace(HttpRuntime.Cache.Get("dataSource").ToString()))
+            {
+                return ServerConfig.GetConnectionString("192.168.2.230", "tjprj", "erptest", "test@123456");
+            }
+            else
+            {
+                string ConnectionString=ServerConfig.GetConnectionString(HttpRuntime.Cache.Get("dataSource").ToString(), HttpRuntime.Cache.Get("dataCatalog").ToString(), HttpRuntime.Cache.Get("userName").ToString(), HttpRuntime.Cache.Get("userPwd").ToString());
+                return ConnectionString;
+            }
           //  return ServerConfig.GetConnectionString(dataSource, dataCatalog, userName, userPwd);
-            return ServerConfig.GetConnectionString("192.168.2.230", "tjprj", "erptest", "test@123456");
+         
         }
         /// <summary>
         /// 得到访问数据库的链接串

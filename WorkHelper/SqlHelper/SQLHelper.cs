@@ -20,14 +20,8 @@ namespace CMS.Utilities
     /// </summary>
     public abstract class SqlHelper
     {
-        //public SqlHelper(string useConnString)
-        //{
-        //    ConnectionString = useConnString;
-        //}
 
-        //Database connection strings
-        public static readonly string ConnectionString = GetConnectionString();
-        //public   string ConnectionString = GetConnectionString();
+        public static  string ConnectionString = GetConnectionString();
 
         private static string GetConnectionString()
         {
@@ -36,6 +30,8 @@ namespace CMS.Utilities
                 strTmp = ServerConfig.GetConnectionString();
             return strTmp;
         }
+
+
         public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.AppSettings["SQLConnString1"];
         public static readonly string ConnectionStringInventoryDistributedTransaction = ConfigurationManager.AppSettings["SQLConnString2"];
         public static readonly string ConnectionStringOrderDistributedTransaction = ConfigurationManager.AppSettings["SQLConnString3"];

@@ -9,54 +9,56 @@ using System.Data.OleDb;
 using System.Configuration;
 using System.Data.SqlClient;
 using System;
+using CMS.Utilities;
+
 namespace MyProject.Entitiese
-{
-
-    public class Team_Bizs
-    {
-        public class Team_Models
-        {
-
-            private String _team_code;
+{     
+      
+ public class Team_Bizs
+ {      
+      public class Team_Models      
+       {         
+		                      
+            private String _team_code;                      
             public String Team_code
             {
-                get { return _team_code; }
-                set { _team_code = value; }
-            }
-
-            private String _team_name;
+                   get { return _team_code; }
+                   set { _team_code = value; }
+             }                                                
+                                  
+            private String _team_name;                      
             public String Team_name
             {
-                get { return _team_name; }
-                set { _team_name = value; }
-            }
-
-            private String _team_status;
+                   get { return _team_name; }
+                   set { _team_name = value; }
+             }                                                
+                                  
+            private String _team_status;                      
             public String Team_status
             {
-                get { return _team_status; }
-                set { _team_status = value; }
-            }
-
-            private String _team_user;
+                   get { return _team_status; }
+                   set { _team_status = value; }
+             }                                                
+                                  
+            private String _team_user;                      
             public String Team_user
             {
-                get { return _team_user; }
-                set { _team_user = value; }
-            }
-
-            private DateTime _team_date;
+                   get { return _team_user; }
+                   set { _team_user = value; }
+             }                                                
+                                  
+            private DateTime _team_date;                      
             public DateTime Team_date
             {
-                get { return _team_date; }
-                set { _team_date = value; }
-            }
-
-
-        }
-        public bool InsertTeam_(Team_Models model)
+                   get { return _team_date; }
+                   set { _team_date = value; }
+             }                                                
+                   
+     
+           }     
+	    public bool InsertTeam_(Team_Models model)
         {
-            string strSql = @"
+		     string strSql = @"
                    INSERT Team_(
 		    Team_code,
               Team_name,
@@ -74,7 +76,7 @@ namespace MyProject.Entitiese
                         
 			         )
                      ";
-            SqlParameter[] parameters = new SqlParameter[]
+			     SqlParameter[] parameters = new SqlParameter[]
                     {
 			              new SqlParameter("Team_code,", SqlDbType.NVarChar, 255),
                       new SqlParameter("Team_name,", SqlDbType.NVarChar, 255),
@@ -83,13 +85,13 @@ namespace MyProject.Entitiese
                       new SqlParameter("Team_date,", SqlDbType.NVarChar, 255),
                            
 					    };
-            parameters[0].Value = model.Team_code;
-            parameters[1].Value = model.Team_name;
-            parameters[2].Value = model.Team_status;
-            parameters[3].Value = model.Team_user;
-            parameters[4].Value = model.Team_date;
-
-            using (SqlConnection conn = new SqlConnection(SqlHelper.ConnectionString))
+				 parameters[0].Value = model.Team_code;
+				    parameters[1].Value = model.Team_name;
+				    parameters[2].Value = model.Team_status;
+				    parameters[3].Value = model.Team_user;
+				    parameters[4].Value = model.Team_date;
+				          
+		     using (SqlConnection conn = new SqlConnection(SqlHelper.ConnectionString))
             {
                 conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -111,14 +113,14 @@ namespace MyProject.Entitiese
                     catch (System.Exception e)
                     {
                         trans.Rollback();
-                        return false;
+					    return false;
                         throw e;
                     }
                 }
             }
-        }
+           }     
 
 
-    }
-
+   }
+          
 }
