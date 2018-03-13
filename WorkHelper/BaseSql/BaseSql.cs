@@ -20,6 +20,7 @@ namespace DevLogHelper.BaseSql
         /// <summary>
         /// 默认生成基本的插入语句 Sql插入、删除、更新
         /// </summary>
+        /// github地址：https://github.com/Jimmey-Jiang
         /// <param name="inputSql">多参数
         /// 0:对应的Sql
         /// 1:参数是否为实体</param>
@@ -52,12 +53,8 @@ namespace DevLogHelper.BaseSql
             StringBuilder returnstr = new StringBuilder();
             StringBuilder strBuilder = new StringBuilder();
             DataSet ds = SqlHelper.Query(inputCode);
-            DataRow dr = null;
             DataTable dt = new DataTable();
-
-                dt = ds.Tables[0];
-                dr = ds.Tables[0].Rows[0];
-
+            dt = ds.Tables[0];
             string Id = string.Empty; //业务主Id,一般情况第一个字段是主键，当然如果第一个字段不是主键，那就需要修改了
 
             #region 封装实体Model
@@ -66,62 +63,67 @@ namespace DevLogHelper.BaseSql
                public class Model
             {
                ");
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
                 if (i == 0)
                 {
-                    Id = dr.Table.Columns[0].ToString();//一般情况第一个字段是主键，当然如果第一个字段不是主键，那就需要修改了
+                    Id = ds.Tables[0].Columns[0].ToString();//一般情况第一个字段是主键，当然如果第一个字段不是主键，那就需要修改了
                 }
-                string Type = dr.Table.Columns[i].DataType.ToString();
+                string Type = ds.Tables[0].Columns[i].DataType.ToString();
                 switch (Type)
                 {
                     case "System.String":
-                        strBuilder.AppendLine("       private string " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public string " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("         {");
-                        strBuilder.AppendLine("            get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("            set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("          }");
+                       // strBuilder.AppendLine("       private string " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public string " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                    //    strBuilder.AppendLine("            get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                      //  strBuilder.AppendLine("            set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                       // strBuilder.AppendLine("          }");
                         break;
                     case "System.Int":
-                        strBuilder.AppendLine("       private Int " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public Int " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("         {");
-                        strBuilder.AppendLine("            get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("             set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("         }");
+                       // strBuilder.AppendLine("       private Int " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public System.Int " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                        //strBuilder.AppendLine("         {");
+                        //strBuilder.AppendLine("            get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                        //strBuilder.AppendLine("             set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                        //strBuilder.AppendLine("         }");
                         break;
                     case "System.Int32":
-                        strBuilder.AppendLine("       private Int " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public Int " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("         {");
-                        strBuilder.AppendLine("            get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("             set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("         }");
+                      //  strBuilder.AppendLine("       private Int " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public System.Int " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                        //strBuilder.AppendLine("         {");
+                        //strBuilder.AppendLine("            get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                        //strBuilder.AppendLine("             set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                        //strBuilder.AppendLine("         }");
                         break;
                     case "System.DateTime":
-                        strBuilder.AppendLine("       private System.DateTime " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public System.DateTime " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("          {");
-                        strBuilder.AppendLine("             get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("             set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("          }");
+                     //   strBuilder.AppendLine("       private System.DateTime " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public System.DateTime " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                        //strBuilder.AppendLine("          {");
+                        //strBuilder.AppendLine("             get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                        //strBuilder.AppendLine("             set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                        //strBuilder.AppendLine("          }");
                         break;
                     case "System.Decimal":
-                        strBuilder.AppendLine("       private System.Decimal " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public System.Decimal " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("        {");
-                        strBuilder.AppendLine("            get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("            set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("         }");
+                   //     strBuilder.AppendLine("       private System.Decimal " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public System.Decimal " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                        //strBuilder.AppendLine("        {");
+                        //strBuilder.AppendLine("            get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                        //strBuilder.AppendLine("            set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                        //strBuilder.AppendLine("         }");
                         break;
                     default:
-                        strBuilder.AppendLine("       private string " + "_" + dr.Table.Columns[i] + ";");
-                        strBuilder.AppendLine("       public string " + dr.Table.Columns[i] + "");
-                        strBuilder.AppendLine("        {");
-                        strBuilder.AppendLine("             get { return " + "_" + dr.Table.Columns[i] + "; }");
-                        strBuilder.AppendLine("             set { " + "_" + dr.Table.Columns[i] + " = value; }");
-                        strBuilder.AppendLine("         }");
+                       // strBuilder.AppendLine("       private string " + "_" + ds.Tables[0].Columns[i] + ";");
+                        strBuilder.AppendLine("       public string " + ds.Tables[0].Columns[i] + "");
+                        strBuilder.AppendLine("         { get; set; }");
+                        //strBuilder.AppendLine("        {");
+                        //strBuilder.AppendLine("             get { return " + "_" + ds.Tables[0].Columns[i] + "; }");
+                        //strBuilder.AppendLine("             set { " + "_" + ds.Tables[0].Columns[i] + " = value; }");
+                        //strBuilder.AppendLine("         }");
                         break;
                 }
             }
@@ -144,35 +146,35 @@ namespace DevLogHelper.BaseSql
             StringBuilder strTmp = new StringBuilder();
             try
             {
-                for (int i = 0; i < dr.Table.Columns.Count; i++)//生成insert 
+                for (int i = 0; i < ds.Tables[0].Columns.Count; i++)//生成insert 
                 {
                     if (i == 0)
                     {
                         strTmp.AppendLine("               INSERT " + Table + "(");
                     }
-                    if (i == dr.Table.Columns.Count - 1)
+                    if (i == ds.Tables[0].Columns.Count - 1)
                     {
-                        strTmp.AppendLine("                 " + dr.Table.Columns[i].ToString() + ")");
+                        strTmp.AppendLine("                 " + ds.Tables[0].Columns[i].ToString() + ")");
                     }
                     else
                     {
-                        strTmp.AppendLine("                 " + dr.Table.Columns[i].ToString() + ",");
+                        strTmp.AppendLine("                 " + ds.Tables[0].Columns[i].ToString() + ",");
                     }
                 }
 
-                for (int i = 0; i < dr.Table.Columns.Count; i++)
+                for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
                 {
                     if (i == 0)
                     {
                         strTmp.AppendLine("                 VALUES " + "(");
                     }
-                    if (i == dr.Table.Columns.Count - 1)
+                    if (i == ds.Tables[0].Columns.Count - 1)
                     {
-                        strTmp.AppendLine("                   @" + dr.Table.Columns[i].ToString() + ")");
+                        strTmp.AppendLine("                   @" + ds.Tables[0].Columns[i].ToString() + ")");
                     }
                     else
                     {
-                        strTmp.AppendLine("                    @" + dr.Table.Columns[i].ToString() + ",");
+                        strTmp.AppendLine("                    @" + ds.Tables[0].Columns[i].ToString() + ",");
                     }
 
                 }
@@ -199,36 +201,36 @@ namespace DevLogHelper.BaseSql
             strBuilder.AppendLine(@"                 SqlParameter[] parameters = new SqlParameter[]
                                                   {");
             //参数类型
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                string Type = dr.Table.Columns[i].DataType.ToString();
+                string Type = ds.Tables[0].Columns[i].DataType.ToString();
                 switch (Type)
                 {
                     case "System.String":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.NVarChar, 255),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.NVarChar, 255),");
                         break;
                     case "System.Int":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Int),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.Int),");
                         break;
                     case "System.Int32":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Int),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.Int),");
                         break;
                     case "System.DateTime":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.DateTime),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.DateTime),");
                         break;
                     case "System.Decimal":
-                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Decimal),");
+                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.Decimal),");
                         break;
                     default:
-                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.NVarChar, 255),");
+                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.NVarChar, 255),");
                         break;
                 }
             }
             strBuilder.AppendLine(@"                            };");
 
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                strBuilder.AppendLine("                        parameters[" + i + "].Value =" + "model." + dr.Table.Columns[i] + ";");
+                strBuilder.AppendLine("                        parameters[" + i + "].Value =" + "model." + ds.Tables[0].Columns[i] + ";");
             }
 
             strBuilder.AppendLine(@"
@@ -277,21 +279,21 @@ namespace DevLogHelper.BaseSql
             strTmp = new StringBuilder(); //sql 
             try
             {
-                for (int i = 0; i < dr.Table.Columns.Count; i++)//生成Update 
+                for (int i = 0; i < ds.Tables[0].Columns.Count; i++)//生成Update 
                 {
                     if (i == 0)
                     {
                         strTmp.AppendLine("               Update " + Table + "  SET ");
                     }
-                    if (i == dr.Table.Columns.Count - 1)
+                    if (i == ds.Tables[0].Columns.Count - 1)
                     {
 
 
-                        strTmp.AppendLine("                 " + dr.Table.Columns[i].ToString() + "=" + "@" + dr.Table.Columns[i].ToString() + " where " + Id + "=" + "@" + Id + "  ");
+                        strTmp.AppendLine("                 " + ds.Tables[0].Columns[i].ToString() + "=" + "@" + ds.Tables[0].Columns[i].ToString() + " where " + Id + "=" + "@" + Id + "  ");
                     }
                     else
                     {
-                        strTmp.AppendLine("                  " + dr.Table.Columns[i].ToString() + "=" + "@" + dr.Table.Columns[i].ToString() + ",");
+                        strTmp.AppendLine("                  " + ds.Tables[0].Columns[i].ToString() + "=" + "@" + ds.Tables[0].Columns[i].ToString() + ",");
                     }
                 }
             }
@@ -316,33 +318,33 @@ namespace DevLogHelper.BaseSql
             strBuilder.AppendLine(@"                 SqlParameter[] parameters = new SqlParameter[]
                                                   {");
             //参数类型
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                string Type = dr.Table.Columns[i].DataType.ToString();
+                string Type = ds.Tables[0].Columns[i].DataType.ToString();
                 switch (Type)
                 {
                     case "System.String":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.NVarChar, 255),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.NVarChar, 255),");
                         break;
                     case "System.Int":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Int),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.Int),");
                         break;
                     case "System.DateTime":
-                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.DateTime),");
+                        strBuilder.AppendLine("                     new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.DateTime),");
                         break;
                     case "System.Decimal":
-                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.Decimal),");
+                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.Decimal),");
                         break;
                     default:
-                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + dr.Table.Columns[i] + "\", SqlDbType.NVarChar, 255),");
+                        strBuilder.AppendLine("                      new SqlParameter(\"" + "@" + ds.Tables[0].Columns[i] + "\", SqlDbType.NVarChar, 255),");
                         break;
                 }
             }
             strBuilder.AppendLine(@"                            };");
 
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                strBuilder.AppendLine("                        parameters[" + i + "].Value =" + "model." + dr.Table.Columns[i] + ";");
+                strBuilder.AppendLine("                        parameters[" + i + "].Value =" + "model." + ds.Tables[0].Columns[i] + ";");
             }
 
             strBuilder.AppendLine(@"
@@ -394,12 +396,12 @@ namespace DevLogHelper.BaseSql
 
             strBuilder.AppendLine("        List<SqlParameter> parameters = new List<SqlParameter>();");
             strBuilder.AppendLine("        StringBuilder sqlWhere = new StringBuilder();");
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                strBuilder.AppendLine("       if (!string.IsNullOrEmpty(model." + dr.Table.Columns[i].ToString() + ".ToString())) ");
+                strBuilder.AppendLine("       if (!string.IsNullOrEmpty(model." + ds.Tables[0].Columns[i].ToString() + ".ToString())) ");
                 strBuilder.AppendLine("       {");
-                strBuilder.AppendLine("          sqlWhere.Append(\" AND " + dr.Table.Columns[i].ToString() + "=@" + dr.Table.Columns[i].ToString() + "\");");
-                strBuilder.AppendLine("          parameters.Add(new SqlParameter(\"@" + dr.Table.Columns[i].ToString() + "\", SqlDbType.NVarChar, 255) { SqlValue = model." + dr.Table.Columns[i].ToString() + " });");
+                strBuilder.AppendLine("          sqlWhere.Append(\" AND " + ds.Tables[0].Columns[i].ToString() + "=@" + ds.Tables[0].Columns[i].ToString() + "\");");
+                strBuilder.AppendLine("          parameters.Add(new SqlParameter(\"@" + ds.Tables[0].Columns[i].ToString() + "\", SqlDbType.NVarChar, 255) { SqlValue = model." + ds.Tables[0].Columns[i].ToString() + " });");
                 strBuilder.AppendLine("       } ");
             }
             strBuilder.AppendLine("                    string strSql = string.Format(@\"");
@@ -408,7 +410,7 @@ namespace DevLogHelper.BaseSql
 
             strBuilder.AppendLine(@"    
 
-                   DataTable dt = SqlHelper.Query(strSql, parameters.ToArray()).Tables[0];
+                    DataTable dt = SqlHelper.QueryDT(strSql, parameters.ToArray());
                   if (dt!=null)
                    {");
             strBuilder.AppendLine("        iRecordCount = int.Parse(dt.Rows[0][\"" + "rc" + "\"].ToString());");
@@ -461,16 +463,16 @@ namespace DevLogHelper.BaseSql
             strBuilder.AppendLine(@"        ExcelUtility excelUtil = new ExcelUtility(this, strFileName);
             List<ExcelHeader> headerS = new List<ExcelHeader>() { ");
 
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                string Type = dr.Table.Columns[i].DataType.ToString();
+                string Type = ds.Tables[0].Columns[i].DataType.ToString();
                 switch (Type)
                 {
                     case "System.DateTime":
-                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + dr.Table.Columns[i] + "\", DataType = EnumColumnDataType.日期, Width = 15 },");
+                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + ds.Tables[0].Columns[i] + "\", DataType = EnumColumnDataType.日期, Width = 15 },");
                         break;
                     default:
-                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + dr.Table.Columns[i] + "\", DataType = EnumColumnDataType.文本, Width = 15 },");
+                        strBuilder.AppendLine("           new ExcelHeader() { Name = \"" + ds.Tables[0].Columns[i] + "\", DataType = EnumColumnDataType.文本, Width = 15 },");
                         break;
                 }
             }
@@ -483,9 +485,9 @@ namespace DevLogHelper.BaseSql
                     List<string> dataVals = new List<string>() { ");
 
 
-            for (int i = 0; i < dr.Table.Columns.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
             {
-                strBuilder.AppendLine("                            dr[\"" + dr.Table.Columns[i] + "\"].ToString(), ");
+                strBuilder.AppendLine("                            dr[\"" + ds.Tables[0].Columns[i] + "\"].ToString(), ");
             }
 
             strBuilder.AppendLine(@"          };       

@@ -42,9 +42,11 @@ namespace DevLogHelper
                 HttpRuntime.Cache.Insert("dataCatalog", this.txtdataCatalog.Text);
                 HttpRuntime.Cache.Insert("userName", this.txtuserName.Text);
                 HttpRuntime.Cache.Insert("userPwd", this.txtuserPwd.Text);
+                if (String.IsNullOrEmpty(txt_TableName.Text) || txt_TableName.Text.Trim() == string.Empty) { MessageBox.Show("请输入表名"); return; }
+
 
                 BaseSql.BaseSql sq = new BaseSql.BaseSql();
-                StringBuilder str = sq.BuilderCode(txtInput.Text, cbIsModel, txt_TableName.Text, ckb_Model.Checked, ckb_Insert.Checked,ckb_Update.Checked,ckb_Select.Checked,ckb_Delete.Checked,ckbExcel.Checked);
+                StringBuilder str = sq.BuilderCode(txtInput.Text, cbIsModel, txt_TableName.Text, ckb_Model.Checked, ckb_Insert.Checked, ckb_Update.Checked, ckb_Select.Checked, ckb_Delete.Checked, ckbExcel.Checked);
                 txtResult.Text = str.ToString();
                 Clipboard.SetDataObject(str.ToString());
             }

@@ -69,7 +69,7 @@
             this.txtInput.Size = new System.Drawing.Size(668, 102);
             this.txtInput.TabIndex = 1;
             this.txtInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.txtInput.WaterText = "输入表名，或者直接输入Sql语句";
+            this.txtInput.WaterText = "直接输入Sql语句(如：SELECT *FROM Basic_Category)";
             // 
             // txtResult
             // 
@@ -112,7 +112,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.34921F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.65079F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 374F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
             this.tableLayoutPanel2.Controls.Add(this.btnCreate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labTip, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.cbIsModel, 1, 0);
@@ -151,9 +151,9 @@
             this.labTip.BorderColor = System.Drawing.Color.White;
             this.labTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labTip.ForeColor = System.Drawing.Color.Red;
-            this.labTip.Location = new System.Drawing.Point(296, 0);
+            this.labTip.Location = new System.Drawing.Point(295, 0);
             this.labTip.Name = "labTip";
-            this.labTip.Size = new System.Drawing.Size(369, 39);
+            this.labTip.Size = new System.Drawing.Size(370, 39);
             this.labTip.TabIndex = 1;
             this.labTip.Text = "当前无操作";
             this.labTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,7 +168,7 @@
             this.cbIsModel.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbIsModel.Location = new System.Drawing.Point(168, 3);
             this.cbIsModel.Name = "cbIsModel";
-            this.cbIsModel.Size = new System.Drawing.Size(122, 33);
+            this.cbIsModel.Size = new System.Drawing.Size(121, 33);
             this.cbIsModel.TabIndex = 3;
             this.cbIsModel.Text = "参数是否为实体";
             this.cbIsModel.UseVisualStyleBackColor = true;
@@ -336,6 +336,7 @@
             // 
             this.txtuserPwd.Location = new System.Drawing.Point(397, 66);
             this.txtuserPwd.Name = "txtuserPwd";
+            this.txtuserPwd.PasswordChar = '*';
             this.txtuserPwd.Size = new System.Drawing.Size(155, 21);
             this.txtuserPwd.TabIndex = 18;
             // 
