@@ -112,7 +112,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.34921F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.65079F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 376F));
             this.tableLayoutPanel2.Controls.Add(this.btnCreate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labTip, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.cbIsModel, 1, 0);
@@ -135,7 +135,7 @@
             this.btnCreate.MouseBack = null;
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.NormlBack = null;
-            this.btnCreate.Size = new System.Drawing.Size(159, 33);
+            this.btnCreate.Size = new System.Drawing.Size(158, 33);
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "生成";
             this.btnCreate.UseVisualStyleBackColor = false;
@@ -151,9 +151,9 @@
             this.labTip.BorderColor = System.Drawing.Color.White;
             this.labTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labTip.ForeColor = System.Drawing.Color.Red;
-            this.labTip.Location = new System.Drawing.Point(295, 0);
+            this.labTip.Location = new System.Drawing.Point(294, 0);
             this.labTip.Name = "labTip";
-            this.labTip.Size = new System.Drawing.Size(370, 39);
+            this.labTip.Size = new System.Drawing.Size(371, 39);
             this.labTip.TabIndex = 1;
             this.labTip.Text = "当前无操作";
             this.labTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,7 +166,7 @@
             this.cbIsModel.AutoSize = true;
             this.cbIsModel.Checked = true;
             this.cbIsModel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbIsModel.Location = new System.Drawing.Point(168, 3);
+            this.cbIsModel.Location = new System.Drawing.Point(167, 3);
             this.cbIsModel.Name = "cbIsModel";
             this.cbIsModel.Size = new System.Drawing.Size(121, 33);
             this.cbIsModel.TabIndex = 3;

@@ -1,0 +1,11 @@
+E:\github合集\JWorkHelper\WorkHelper\bin\Release\DevLogHelper.exe.config
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.ApproveFrom.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.BaseSqlBuilder.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.DevCode.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.ExcelCode.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.Main.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.Properties.Resources.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.RepeaterTableCode.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.Resources.ResourceDevCode.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\DevLogHelper.Resources.ResourceMsg.resources
+E:\github合集\JWorkHelper\WorkHelper\obj\x86\Release\WorkHelper.csproj.GenerateResource.Cache
